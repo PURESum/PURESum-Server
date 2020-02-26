@@ -12,6 +12,7 @@
 "여기 짜장면 하나요!"
 
 ## Model, Template, View
+![](images/mtv.png)
 - View: 요청에 대한 응답을 하는 곳. 요청을 처리해주는 곳. like 주방
 "네 여기요!"
 
