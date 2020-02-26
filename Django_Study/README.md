@@ -4,7 +4,9 @@
 
 ## 02 Django 기초
 
-
+[내용 정리 바로가기](https://github.com/PURESum/PURESum-Server/tree/master/Django_Study/Django%EA%B8%B0%EC%B4%88)
 
 ## 03 Django CRUD
+
+[내용 정리 바로가기](https://github.com/PURESum/PURESum-Server/tree/master/Django_Study/DjangoCRUD)
 
