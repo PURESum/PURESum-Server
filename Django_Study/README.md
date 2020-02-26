@@ -101,7 +101,7 @@ class Post(models.Model):
     # CharField: 문자열 데이터 타입
     # max_length: 최대 길이
     title = models.CharField(max_length=200)
-    content = models.TextField()
+    content = models.TextField(default="")
     # IntegerField: 정수형 데이터 타입
     view_count = models.IntegerField(default=0)
     
@@ -170,6 +170,89 @@ from 앱이름.models import 클래스이름
 변수명.created_at
 ```
 
+# 4강. 관리자 페이지 활용하기
+
+관리자 페이지에서 CRUD, 검색, 필터링 등의 관리자 기능 만들기
+
+### 슈퍼유저 생성
+```
+python manage.py createsuperuser
+Username:
+Email address: 
+Password:
+```
+
+### admin 페이지 수정
+admin.py
+```python
+from django.contrib import admin
+from .models import 클래스이름
+
+admin.site.register(클래스이름)
+```
+
+- 데코레이터: 함수나 클래스를 꾸며주는 역할
+
+```python
+## posts 앱안의 admin.py
+
+from django.contrib import admin
+from .models import Post
+
+@admin.register(Post)
+class PostAdmin(admin.ModelAdmin):
+    # list_display: tuple 형태로 원하는 column들을 보여줌
+    list_display = (
+        'id', 
+        'title', 
+        'view_count', 
+        'created_at', 
+        'updated_at'
+    )
+    search_fields = (
+        'title',
+    )
+    # list_filter
+    # list_display_links
+```
+
+
+
+# 5강. HTML 띄우기
+view, template
+
+1. 경로 만들기
+ex) naver.com -> 도메인
+url = 도메인 + 경로
+
+2. 해당 경로에 view를 할당
+
+```python
+## posts 앱 안에 templates 폴더 생성 그 안에 posts 폴더생성 그 안에 main.html 생성
+
+## posts > views.py
+# render: response로 html을 뿌려줄 때 사용하는 함수
+from django.shortcuts import render
+
+# render라는 함수에서 html 등의 파일을 가져올 때 templates 이름의 폴더에서 가져옴
+# 다른 앱(폴더)에 같은 이름의 파일이 있다면 원하지 않는 파일을 가져올 수도 있으므로 주의해야 함
+def main(request):
+    return render(request, 'posts/main.html')
+```
+
+```python
+## 프로젝트 폴더 > urls.py
+from django.comtrib import admin
+from django.urls import path
+from posts.views import main # 도메인에서 main 함수로 가도록 설정하기 위해
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('', main),
+]
+```
+
+3. 해당 view에서 요청을 처리하여 응답
 
 
 
