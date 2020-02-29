@@ -42,6 +42,21 @@ Object Relational Mapping
 
 
 
+# 11강. Create 생성하기 1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
