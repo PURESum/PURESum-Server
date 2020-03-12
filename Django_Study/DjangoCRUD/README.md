@@ -44,11 +44,71 @@ Object Relational Mapping
 
 # 11강. Create 생성하기 1
 
+게시글 업로드할 수 있는 블로그 만들기!
+
+```python
+# MyFirstDjang > urls.py
+
+urlpatterns = [
+    ...
+    path('posts/', include('posts.urls')),
+]
 
 
+# posts > urls.py
+
+from django.urls import path
+from .views import new, create
+
+app_name = "posts"
+urlpatterns = [
+    path('new/', new, name="new"),
+    path('create/', create, name="create"),
+]
+```
+
+```python
+# posts > views.py
+
+from django.shortcuts import render, redirect
+from .models import Post
+
+def new(request):
+    return render(request, 'posts/new.html')
 
 
+def create(request):
+    if request.method == "POST":
+        title = request.POST.get('title')
+        content = request.POST.get('content')
+        Post.objects.create(title=title, content=content)
+        return redirect('main')   
+```
 
+```python
+<!-- posts > templates > posts > new.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h1>
+        새로운 글 작성하기
+    </h1>
+    <form action="{% url 'posts:create' %}" method="POST">
+      {% csrf_token %}
+      <div class="form-group">
+        <label>글 제목</label>
+        <input type="text" class="form-control" name="title">
+      </div>
+      <div class="form-group">
+        <label>글 내용</label>
+        <textarea class="form-control" name="content"></textarea>
+      </div>
+      <input type="submit" value="글 작성" class="btn btn-outline-primary">
+    </form>   
+</div>
+{% endblock %}
+```
 
 
 
