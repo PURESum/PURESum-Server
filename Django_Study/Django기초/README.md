@@ -234,7 +234,7 @@ url = 도메인 + 경로
 ## posts > views.py
 # render: response로 html을 뿌려줄 때 사용하는 함수
 from django.shortcuts import render
-
+r
 # render라는 함수에서 html 등의 파일을 가져올 때 templates 이름의 폴더에서 가져옴
 # 다른 앱(폴더)에 같은 이름의 파일이 있다면 원하지 않는 파일을 가져올 수도 있으므로 주의해야 함
 def main(request):

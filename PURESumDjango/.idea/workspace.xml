@@ -2,16 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="864052f7-50c3-4de0-b43f-a028b41193fe" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/PURESumProject/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PURESumProject/practice/templates/practice/new.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PURESumProject/practice/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PURESum_resfulAPI/PURESum_restful_main/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Django_Study/DjangoCRUD/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../Django_Study/DjangoCRUD/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PURESumProject/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/PURESumProject/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PURESumProject/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/PURESumProject/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PURESumProject/PURESumProject/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/PURESumProject/PURESumProject/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PURESumProject/practice/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/PURESumProject/practice/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PURESum_resfulAPI/PURESum_resfulAPI/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/PURESum_resfulAPI/PURESum_resfulAPI/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PURESum_resfulAPI/PURESum_resfulAPI/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/PURESum_resfulAPI/PURESum_resfulAPI/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PURESum_resfulAPI/PURESum_restful_main/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/PURESum_resfulAPI/PURESum_restful_main/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PURESum_resfulAPI/PURESum_restful_main/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/PURESum_resfulAPI/PURESum_restful_main/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PURESum_resfulAPI/PURESum_restful_main/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/PURESum_resfulAPI/PURESum_restful_main/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -22,29 +18,15 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/PURESum_resfulAPI/PURESum_restful_main/serializers.py">
+        <entry file="file://$PROJECT_DIR$/PURESum_resfulAPI/PURESum_restful_main/admin.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="5" column="25" selection-start-line="5" selection-start-column="25" selection-end-line="5" selection-end-column="25" />
+            <state relative-caret-position="255">
+              <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
               <folding>
-                <element signature="e#0#26#0" expanded="true" />
+                <element signature="e#0#32#0" expanded="true" />
               </folding>
             </state>
           </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/PURESumProject/practice/models.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="40" selection-start-line="4" selection-start-column="40" selection-end-line="4" selection-end-column="40" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/PURESum_resfulAPI/PURESum_restful_main/tests.py">
-          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -59,10 +41,46 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/PURESum_resfulAPI/PURESum_restful_main/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" column="38" selection-start-line="11" selection-start-column="38" selection-end-line="11" selection-end-column="38" />
+            <state relative-caret-position="180">
+              <caret line="12" selection-start-line="12" selection-end-line="12" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/PURESum_resfulAPI/PURESum_resfulAPI/urls.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="300">
+              <caret line="20" column="10" selection-start-line="20" selection-start-column="10" selection-end-line="20" selection-end-column="10" />
+              <folding>
+                <element signature="e#641#673#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/PURESum_resfulAPI/PURESum_restful_main/urls.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="225">
+              <caret line="15" column="76" selection-start-line="15" selection-start-column="76" selection-end-line="15" selection-end-column="76" />
+              <folding>
+                <element signature="e#0#41#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/PURESum_resfulAPI/PURESum_resfulAPI/settings.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="363">
+              <caret line="85" column="27" lean-forward="true" selection-start-line="85" selection-start-column="27" selection-end-line="85" selection-end-column="27" />
+              <folding>
+                <element signature="e#318#327#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -74,48 +92,13 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/PURESum_resfulAPI/PURESum_resfulAPI/urls.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="20" column="68" selection-start-line="20" selection-start-column="68" selection-end-line="20" selection-end-column="68" />
-              <folding>
-                <element signature="e#641#673#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/PURESum_resfulAPI/PURESum_restful_main/urls.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="14" column="76" selection-start-line="14" selection-start-column="76" selection-end-line="14" selection-end-column="76" />
-              <folding>
-                <element signature="e#0#41#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
+        <entry file="file://$PROJECT_DIR$/PURESum_resfulAPI/PURESum_restful_main/migrations/0001_initial.py">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/PURESum_resfulAPI/PURESum_resfulAPI/settings.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="475">
-              <caret line="79" column="45" lean-forward="true" selection-start-line="79" selection-start-column="45" selection-end-line="79" selection-end-column="45" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/PURESumProject/PURESumProject/urls.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="19" column="14" selection-start-line="19" selection-start-column="14" selection-end-line="19" selection-end-column="14" />
-              <folding>
-                <element signature="e#638#670#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
+        <entry file="file://$PROJECT_DIR$/PURESum_resfulAPI/PURESum_restful_main/migrations/__init__.py">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
     </leaf>
@@ -144,17 +127,18 @@
         <option value="$PROJECT_DIR$/PURESumProject/practice/views.py" />
         <option value="$PROJECT_DIR$/PURESumProject/practice/templates/practice/new.html" />
         <option value="$PROJECT_DIR$/PURESum_resfulAPI/PURESum_restful_main/serializers.py" />
-        <option value="$PROJECT_DIR$/PURESum_resfulAPI/PURESum_restful_main/views.py" />
         <option value="$PROJECT_DIR$/PURESum_resfulAPI/PURESum_restful_main/url.py" />
-        <option value="$PROJECT_DIR$/PURESum_resfulAPI/PURESum_resfulAPI/urls.py" />
         <option value="$PROJECT_DIR$/PURESum_resfulAPI/manage.py" />
-        <option value="$PROJECT_DIR$/PURESum_resfulAPI/PURESum_restful_main/urls.py" />
         <option value="$PROJECT_DIR$/PURESum_resfulAPI/PURESum_restful_main/models.py" />
+        <option value="$PROJECT_DIR$/PURESum_resfulAPI/PURESum_restful_main/admin.py" />
+        <option value="$PROJECT_DIR$/PURESum_resfulAPI/PURESum_restful_main/urls.py" />
+        <option value="$PROJECT_DIR$/PURESum_resfulAPI/PURESum_restful_main/views.py" />
+        <option value="$PROJECT_DIR$/PURESum_resfulAPI/PURESum_resfulAPI/urls.py" />
         <option value="$PROJECT_DIR$/PURESum_resfulAPI/PURESum_resfulAPI/settings.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="840" />
     <option name="y" value="23" />
     <option name="width" value="840" />
@@ -196,19 +180,9 @@
             <path>
               <item name="PURESumDjango" type="b2602c69:ProjectViewProjectNode" />
               <item name="PURESumDjango" type="462c0819:PsiDirectoryNode" />
-              <item name="PURESumProject" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="PURESumDjango" type="b2602c69:ProjectViewProjectNode" />
-              <item name="PURESumDjango" type="462c0819:PsiDirectoryNode" />
-              <item name="PURESumProject" type="462c0819:PsiDirectoryNode" />
-              <item name="practice" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="PURESumDjango" type="b2602c69:ProjectViewProjectNode" />
-              <item name="PURESumDjango" type="462c0819:PsiDirectoryNode" />
-              <item name="PURESumProject" type="462c0819:PsiDirectoryNode" />
-              <item name="PURESumProject" type="462c0819:PsiDirectoryNode" />
+              <item name="PURESum_resfulAPI" type="462c0819:PsiDirectoryNode" />
+              <item name="PURESum_restful_main" type="462c0819:PsiDirectoryNode" />
+              <item name="migrations" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -302,9 +276,9 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="840" y="23" width="840" height="1027" extended-state="0" />
+    <frame x="0" y="23" width="1680" height="1027" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.54385966" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26495728" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -315,7 +289,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.32941177" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.6117647" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Python Console" order="10" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -384,17 +358,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/PURESumProject/PURESumProject/urls.py">
+    <entry file="file://$PROJECT_DIR$/PURESum_resfulAPI/PURESum_restful_main/tests.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PURESumProject/practice/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="14" selection-start-line="19" selection-start-column="14" selection-end-line="19" selection-end-column="14" />
-          <folding>
-            <element signature="e#638#670#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="60">
+          <caret line="4" column="40" selection-start-line="4" selection-start-column="40" selection-end-line="4" selection-end-column="40" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/PURESum_resfulAPI/manage.py">
+    <entry file="file://$PROJECT_DIR$/PURESum_resfulAPI/db.sqlite3">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/PURESum_resfulAPI/PURESum_restful_main/serializers.py">
@@ -407,23 +381,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/PURESum_resfulAPI/PURESum_restful_main/tests.py">
+    <entry file="file://$PROJECT_DIR$/PURESum_resfulAPI/PURESum_resfulAPI/wsgi.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/PURESum_resfulAPI/PURESum_restful_main/views.py">
+    <entry file="file://$PROJECT_DIR$/PURESumProject/PURESumProject/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="38" selection-start-line="11" selection-start-column="38" selection-end-line="11" selection-end-column="38" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="255">
+          <caret line="17" column="10" selection-start-line="17" selection-start-column="10" selection-end-line="17" selection-end-column="10" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/PURESumProject/practice/models.py">
+    <entry file="file://$PROJECT_DIR$/PURESum_resfulAPI/PURESum_restful_main/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="40" selection-start-line="4" selection-start-column="40" selection-end-line="4" selection-end-column="40" />
+        <state relative-caret-position="180">
+          <caret line="12" selection-start-line="12" selection-end-line="12" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -434,27 +408,52 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/PURESum_resfulAPI/PURESum_resfulAPI/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="475">
-          <caret line="79" column="45" lean-forward="true" selection-start-line="79" selection-start-column="45" selection-end-line="79" selection-end-column="45" />
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/PURESum_resfulAPI/PURESum_restful_main/migrations/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PURESum_resfulAPI/PURESum_restful_main/migrations/0001_initial.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PURESum_resfulAPI/manage.py">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/PURESum_resfulAPI/PURESum_resfulAPI/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
-          <caret line="20" column="68" selection-start-line="20" selection-start-column="68" selection-end-line="20" selection-end-column="68" />
+          <caret line="20" column="10" selection-start-line="20" selection-start-column="10" selection-end-line="20" selection-end-column="10" />
           <folding>
             <element signature="e#641#673#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/PURESum_resfulAPI/PURESum_resfulAPI/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="363">
+          <caret line="85" column="27" lean-forward="true" selection-start-line="85" selection-start-column="27" selection-end-line="85" selection-end-column="27" />
+          <folding>
+            <element signature="e#318#327#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PURESum_resfulAPI/PURESum_restful_main/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///private/var/folders/hn/81kdv8dx2ys1k8d9f6vwhh4r0000gn/T/pip-install-u83sim65/mysqlclient/setup_posix.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/PURESum_resfulAPI/PURESum_restful_main/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="76" selection-start-line="14" selection-start-column="76" selection-end-line="14" selection-end-column="76" />
+        <state relative-caret-position="225">
+          <caret line="15" column="76" selection-start-line="15" selection-start-column="76" selection-end-line="15" selection-end-column="76" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
           </folding>
