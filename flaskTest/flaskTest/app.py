@@ -98,6 +98,8 @@ def predict():
 
     # 예측
     preds = bert_model.predict(new_data)
+    percent = np.max(preds) * 100
+    percent = round(percent, 2)
     preds = np.argmax(preds, axis=1)  # 가장 높은 인덱스 추출
     label = preds.tolist()  # numpy to list
 
@@ -123,7 +125,8 @@ def predict():
             'predict': {
                 'text' : text,
                 'category': category,
-                'label': label[0]
+                'label': label[0],
+                'percent': str(percent)
             },
             'version': '2020.05.06',
             'time': str(end - start)
