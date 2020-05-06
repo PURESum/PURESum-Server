@@ -27,10 +27,45 @@ from keras_bert import AdamWarmup, calc_train_steps
 from keras_bert import get_custom_objects
 from keras_radam import RAdam
 
+import copy
+
 app = Flask(__name__)
 
 path = "."
 SEQ_LEN = 300
+
+DATA_COLUMN = "data"
+LABEL_COLUMN = "label"
+
+data = pd.read_excel(path + "/w.xlsx")
+
+data_label = []
+category = ['연애', '진로', '자존감', '일상', '대인관계']
+for i in range(5):
+  x = data['label'].value_counts()[i]
+  data_label.append(x)
+
+love = data.loc[data['label'] == 0]
+f = lambda x: len(x)
+love_length = love['data'].astype(str).apply(f)
+love_length.head()
+
+course = data.loc[data['label'] == 1]
+f = lambda x: len(x)
+course_length = course['data'].astype(str).apply(f)
+course_length.head()
+
+self_esteem = data.loc[data['label'] == 2]
+f = lambda x: len(x)
+self_esteem_length = self_esteem['data'].astype(str).apply(f)
+self_esteem_length.head()
+
+relationship = data.loc[data['label'] == 4]
+f = lambda x: len(x)
+relationship_length = relationship['data'].astype(str).apply(f)
+relationship_length.head()
+
+data_category = [love, course, self_esteem, "일상", relationship]
 
 token_dict = {}
 with codecs.open(path + "/vocab.txt", 'r', 'utf8') as reader:
@@ -64,8 +99,6 @@ class inherit_Tokenizer(Tokenizer):
 
 tokenizer = inherit_Tokenizer(token_dict)
 
-#text_similarity_bert_model = load_model(path+"/text_similarity2.h5", custom_objects= get_custom_objects(), compile=False)
-
 def predict_convert_data(data_df):
     global tokenizer
     indices = []
@@ -86,17 +119,39 @@ def predict_load_data(x):  # Pandas Dataframe을 인풋으로 받는다
 
     return data_x
 
+def convert_data1(data, data_df):
+    global tokenizer
+    indices, indices1 = [], []
+    for i in tqdm(range(len(data_df))):  # tqdm : for문 상태바 라이브러리
+        ids, segments = tokenizer.encode(data, data_df[DATA_COLUMN][i], max_len=70)
+        indices.append(ids)
+        indices1.append(segments)
+
+    indices = np.array(indices)
+    indices1 = np.array(indices1)
+    return [indices, indices1]
+
+
+def predict_load_data1(requester, pandas_dataframe):
+    data = requester
+    data_df = pandas_dataframe
+
+    data_df[DATA_COLUMN] = data_df[DATA_COLUMN].astype(str)
+    data_x = convert_data1(data, data_df)
+
+    return data_x
+
 @app.route("/predict", methods=["POST"])
 def predict():
     received_data = request.get_json()
     start = time.time()
     text = received_data['content']
 
+    # 카테고리 예측
     bert_model = load_model(path + "/category_test1.h5", custom_objects=get_custom_objects(), compile=False)
 
     new_data = predict_load_data(text)
 
-    # 예측
     preds = bert_model.predict(new_data)
     percent = np.max(preds) * 100
     percent = round(percent, 2)
@@ -114,7 +169,27 @@ def predict():
         category = '일상'
     else:
         category = '대인관계'
+    '''
+    # 유사도 분석
+    text_similarity_bert_model = load_model(path + "/text_similarity2.h5", custom_objects=get_custom_objects(),
+                                            compile=False)
 
+    sorted_category = data_category[label[0]]
+    select_category = sorted_category.reset_index(drop=True)  # 인덱스 reset
+
+    similarity_set = predict_load_data1(text, select_category)  # 문장 유사도를 위한 버트 input 데이터 생성
+
+    text_similarity_preds = text_similarity_bert_model.predict(similarity_set)
+
+    preds = copy.deepcopy(text_similarity_preds)
+    text_similarity_rank = []
+
+    for i in range(3):
+        x = np.argmax(preds)
+        text_similarity_rank.append(x)
+        print(select_category[text_similarity_rank[i]:text_similarity_rank[i] + 1])
+        preds[text_similarity_rank[i]] = [0]
+    '''
     end = time.time()
 
     # 예측 결과
@@ -134,5 +209,7 @@ def predict():
         })
 
 if __name__ == '__main__':
-    app.run()
+    PORT = 50051
+
+    app.run(host='192.168.35.230', debug=True, port=PORT)
 
