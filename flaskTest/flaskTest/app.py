@@ -169,7 +169,7 @@ def predict():
         category = '일상'
     else:
         category = '대인관계'
-    '''
+
     # 유사도 분석
     text_similarity_bert_model = load_model(path + "/text_similarity2.h5", custom_objects=get_custom_objects(),
                                             compile=False)
@@ -183,13 +183,22 @@ def predict():
 
     preds = copy.deepcopy(text_similarity_preds)
     text_similarity_rank = []
-
+    result = []
+    result_dictionary = {'index': -1, 'data': ' ', 'category': ' ', 'label': -1}
+    result_dictionary1 = {'index': -1, 'data': ' ', 'category': ' ', 'label': -1}
+    result_dictionary2 = {'index': -1, 'data': ' ', 'category': ' ', 'label': -1}
+    dic_list = [result_dictionary, result_dictionary1, result_dictionary2]
     for i in range(3):
         x = np.argmax(preds)
         text_similarity_rank.append(x)
-        print(select_category[text_similarity_rank[i]:text_similarity_rank[i] + 1])
+        print(select_category[x:x + 1])
+        result.append(select_category[x:x + 1])
         preds[text_similarity_rank[i]] = [0]
-    '''
+        dic_list[i]['index'] = result[i].index.start
+        dic_list[i]['data'] = result[i].iloc[0, 0]
+        dic_list[i]['category'] = result[i].iloc[0, 1]
+        dic_list[i]['label'] = int(result[i].iloc[0, 2])
+
     end = time.time()
 
     # 예측 결과
@@ -201,7 +210,8 @@ def predict():
                 'text' : text,
                 'category': category,
                 'label': label[0],
-                'percent': str(percent)
+                'percent': str(percent),
+                'counselor': dic_list
             },
             'version': '2020.05.06',
             'time': str(end - start)
@@ -211,5 +221,5 @@ def predict():
 if __name__ == '__main__':
     PORT = 50051
 
-    app.run(host='192.168.35.230', debug=True, port=PORT)
+    app.run(host='192.168.219.109', debug=True, port=PORT)
 
