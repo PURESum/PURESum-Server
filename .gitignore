@@ -3,6 +3,12 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+# model 
+/flaskTest/flaskTest/category_test1.h5
+/flaskTest/flaskTest/text_similarity2.h5
+# vocab
+/flaskTest/flaskTest/vocab.txt
+
 # C extensions
 *.so
 
