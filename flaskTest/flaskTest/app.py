@@ -221,5 +221,5 @@ def predict():
 if __name__ == '__main__':
     PORT = 50051
 
-    app.run(host='192.168.219.109', debug=True, port=PORT)
+    app.run(host='192.168.123.177', debug=True, port=PORT)
 
