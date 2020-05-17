@@ -39,7 +39,29 @@ SEQ_LEN = 300
 DATA_COLUMN = "data"
 LABEL_COLUMN = "label"
 
-data = pd.read_excel(path + "/w.xlsx")
+#data = pd.read_excel(path + "/w.xlsx")
+c, conn = connection()
+c.execute("SELECT * FROM willson_test.willsoner_subcategory")
+subcategories = c.fetchall()
+c.execute("SELECT * FROM willson_test.willsoner")
+willsoner = c.fetchall()
+
+love = []
+course = []
+self_esteem = []
+relationship = []
+
+for idx, subcategory in enumerate(subcategories):
+    if subcategory[4] == 1 or subcategory[4] == 2 or subcategory[4] == 3 or subcategory[4] == 4:
+        love.append(willsoner[idx])
+    elif subcategory[4] == 5 or subcategory[4] == 6 or subcategory[4] == 7 or subcategory[4] == 8 or subcategory[4] == 9:
+        course.append(willsoner[idx])
+    elif subcategory[4] == 10 or subcategory[4] == 11 or subcategory[4] == 12 or subcategory[4] == 13 or subcategory[4] == 14:
+        self_esteem.append(willsoner[idx])
+    elif subcategory[4] == 15 or subcategory[4] == 16 or subcategory[4] == 17 or subcategory[4] == 18:
+        relationship.append(willsoner[idx])
+
+#data = {'data': , 'category': , 'label': }
 
 data_label = []
 category = ['연애', '진로', '자존감', '일상', '대인관계']
@@ -48,25 +70,17 @@ for i in range(5):
   data_label.append(x)
 
 love = data.loc[data['label'] == 0]
-f = lambda x: len(x)
-love_length = love['data'].astype(str).apply(f)
-love_length.head()
-
 course = data.loc[data['label'] == 1]
-f = lambda x: len(x)
-course_length = course['data'].astype(str).apply(f)
-course_length.head()
-
 self_esteem = data.loc[data['label'] == 2]
-f = lambda x: len(x)
-self_esteem_length = self_esteem['data'].astype(str).apply(f)
-self_esteem_length.head()
-
 relationship = data.loc[data['label'] == 4]
-f = lambda x: len(x)
-relationship_length = relationship['data'].astype(str).apply(f)
-relationship_length.head()
 
+'''
+c, conn = connection()
+c.execute("SELECT * FROM willson_test.willsoner_subcategory")
+subcategories = c.fetchall()
+c.execute("SELECT * FROM willson_test.willsoner")
+data = c.fetchall()
+'''
 data_category = [love, course, self_esteem, "일상", relationship]
 
 token_dict = {}
@@ -228,11 +242,41 @@ def predict():
 @app.route("/test", methods=["GET", "POST"])
 def test():
     try:
-        c, conn = connection()
-        return ("okay")
+        return jsonify({
+            'data' : data_category
+        })
+
     except Exception as e:
         return (str(e))
 
+'''willsoner
+    {
+  "data": [
+    [
+      1,
+      9,
+      "기기기",
+      "가가곡",
+      7,
+      4.57143,
+      1586327606,
+      1586327606,
+      1586327606,
+      3,
+      null
+      ], ...
+'''
+'''willsoner_subcategory
+    {
+  "data": [
+    [
+      1,
+      1586327606,
+      1586327606,
+      1,
+      6
+    ],
+'''
 if __name__ == '__main__':
     PORT = 50051
 
