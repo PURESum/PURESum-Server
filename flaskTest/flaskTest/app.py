@@ -36,51 +36,40 @@ app = Flask(__name__)
 path = "."
 SEQ_LEN = 300
 
-DATA_COLUMN = "data"
+DATA_COLUMN = "experience"
 LABEL_COLUMN = "label"
 
 #data = pd.read_excel(path + "/w.xlsx")
+
 c, conn = connection()
-c.execute("SELECT * FROM willson_test.willsoner_subcategory")
-subcategories = c.fetchall()
-c.execute("SELECT * FROM willson_test.willsoner")
-willsoner = c.fetchall()
+subcategories = pd.read_sql("SELECT * FROM willson_test.willsoner_subcategory", conn)
+willsoner = pd.read_sql("SELECT * FROM willson_test.willsoner", conn)
+willsoner = willsoner[['idx', 'experience']]
 
-love = []
-course = []
-self_esteem = []
-relationship = []
-
-for idx, subcategory in enumerate(subcategories):
-    if subcategory[4] == 1 or subcategory[4] == 2 or subcategory[4] == 3 or subcategory[4] == 4:
-        love.append(willsoner[idx])
-    elif subcategory[4] == 5 or subcategory[4] == 6 or subcategory[4] == 7 or subcategory[4] == 8 or subcategory[4] == 9:
-        course.append(willsoner[idx])
-    elif subcategory[4] == 10 or subcategory[4] == 11 or subcategory[4] == 12 or subcategory[4] == 13 or subcategory[4] == 14:
-        self_esteem.append(willsoner[idx])
-    elif subcategory[4] == 15 or subcategory[4] == 16 or subcategory[4] == 17 or subcategory[4] == 18:
-        relationship.append(willsoner[idx])
-
-#data = {'data': , 'category': , 'label': }
-
-data_label = []
-category = ['연애', '진로', '자존감', '일상', '대인관계']
-for i in range(5):
-  x = data['label'].value_counts()[i]
-  data_label.append(x)
-
+'''
 love = data.loc[data['label'] == 0]
 course = data.loc[data['label'] == 1]
 self_esteem = data.loc[data['label'] == 2]
 relationship = data.loc[data['label'] == 4]
+'''
+love = willsoner.loc[subcategories['subcategory_idx'] < 5]
+love['category'] = '연애'
+love['label'] = 0
 
-'''
-c, conn = connection()
-c.execute("SELECT * FROM willson_test.willsoner_subcategory")
-subcategories = c.fetchall()
-c.execute("SELECT * FROM willson_test.willsoner")
-data = c.fetchall()
-'''
+course = willsoner.loc[subcategories['subcategory_idx'] < 10]
+course = willsoner.loc[subcategories['subcategory_idx'] > 4]
+course['category'] = '진로'
+course['label'] = 1
+
+self_esteem = willsoner.loc[subcategories['subcategory_idx'] < 15]
+self_esteem = willsoner.loc[subcategories['subcategory_idx'] > 9]
+self_esteem['category'] = '자존감'
+self_esteem['label'] = 2
+
+relationship = willsoner.loc[subcategories['subcategory_idx'] > 14]
+relationship['category'] = '대인관계'
+relationship['label'] = 4
+
 data_category = [love, course, self_esteem, "일상", relationship]
 
 token_dict = {}
@@ -215,10 +204,10 @@ def predict():
         print(select_category[x:x + 1])
         result.append(select_category[x:x + 1])
         preds[text_similarity_rank[i]] = [0]
-        dic_list[i]['index'] = result[i].index.start
-        dic_list[i]['data'] = result[i].iloc[0, 0]
-        dic_list[i]['category'] = result[i].iloc[0, 1]
-        dic_list[i]['label'] = int(result[i].iloc[0, 2])
+        dic_list[i]['willsoner_idx'] = int(result[i].iloc[0, 0])
+        dic_list[i]['data'] = result[i].iloc[0, 1]
+        dic_list[i]['category'] = result[i].iloc[0, 2]
+        dic_list[i]['label'] = int(result[i].iloc[0, 3])
 
     end = time.time()
 
@@ -280,5 +269,5 @@ def test():
 if __name__ == '__main__':
     PORT = 50051
 
-    app.run(host='192.168.20.54', debug=True, port=PORT)
+    app.run(host='192.168.219.109', debug=True, port=PORT)
 
