@@ -8,6 +8,7 @@ __pycache__/
 /flaskTest/flaskTest/text_similarity2.h5
 # vocab
 /flaskTest/flaskTest/vocab.txt
+/flaskTest/flaskTest/dbconnect.py
 
 # C extensions
 *.so

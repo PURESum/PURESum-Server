@@ -27,6 +27,8 @@ from keras_bert import AdamWarmup, calc_train_steps
 from keras_bert import get_custom_objects
 from keras_radam import RAdam
 
+from dbconnect import connection
+
 import copy
 
 app = Flask(__name__)
@@ -148,7 +150,10 @@ def predict():
     text = received_data['content']
 
     # 카테고리 예측
-    bert_model = load_model(path + "/category_test1.h5", custom_objects=get_custom_objects(), compile=False)
+    bert_model = load_model(
+        path + "/category_test1.h5",
+        custom_objects=get_custom_objects(),
+        compile=False)
 
     new_data = predict_load_data(text)
 
@@ -171,8 +176,10 @@ def predict():
         category = '대인관계'
 
     # 유사도 분석
-    text_similarity_bert_model = load_model(path + "/text_similarity2.h5", custom_objects=get_custom_objects(),
-                                            compile=False)
+    text_similarity_bert_model = load_model(
+        path + "/text_similarity2.h5",
+        custom_objects=get_custom_objects(),
+        compile=False)
 
     sorted_category = data_category[label[0]]
     select_category = sorted_category.reset_index(drop=True)  # 인덱스 reset
@@ -218,8 +225,16 @@ def predict():
         }
         })
 
+@app.route("/test", methods=["GET", "POST"])
+def test():
+    try:
+        c, conn = connection()
+        return ("okay")
+    except Exception as e:
+        return (str(e))
+
 if __name__ == '__main__':
     PORT = 50051
 
-    app.run(host='192.168.219.109', debug=True, port=PORT)
+    app.run(host='192.168.20.54', debug=True, port=PORT)
 
