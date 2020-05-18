@@ -194,9 +194,9 @@ def predict():
     preds = copy.deepcopy(text_similarity_preds)
     text_similarity_rank = []
     result = []
-    result_dictionary = {'index': -1, 'data': ' ', 'category': ' ', 'label': -1}
-    result_dictionary1 = {'index': -1, 'data': ' ', 'category': ' ', 'label': -1}
-    result_dictionary2 = {'index': -1, 'data': ' ', 'category': ' ', 'label': -1}
+    result_dictionary = {'willsoner_idx': -1, 'experience': ' ', 'category': ' ', 'label': -1}
+    result_dictionary1 = {'willsoner_idx': -1, 'experience': ' ', 'category': ' ', 'label': -1}
+    result_dictionary2 = {'willsoner_idx': -1, 'experience': ' ', 'category': ' ', 'label': -1}
     dic_list = [result_dictionary, result_dictionary1, result_dictionary2]
     for i in range(3):
         x = np.argmax(preds)
@@ -205,7 +205,7 @@ def predict():
         result.append(select_category[x:x + 1])
         preds[text_similarity_rank[i]] = [0]
         dic_list[i]['willsoner_idx'] = int(result[i].iloc[0, 0])
-        dic_list[i]['data'] = result[i].iloc[0, 1]
+        dic_list[i]['experience'] = result[i].iloc[0, 1]
         dic_list[i]['category'] = result[i].iloc[0, 2]
         dic_list[i]['label'] = int(result[i].iloc[0, 3])
 
@@ -269,5 +269,5 @@ def test():
 if __name__ == '__main__':
     PORT = 50051
 
-    app.run(host='192.168.219.109', debug=True, port=PORT)
+    app.run(host='192.168.0.170', debug=True, port=PORT)
 
