@@ -6,6 +6,7 @@ __pycache__/
 # model 
 /flaskTest/flaskTest/category_test.h5
 /flaskTest/flaskTest/category_test_new.h5
+/flaskTest/flaskTest/category_final.h5
 /flaskTest/flaskTest/text_similarity.h5
 /flaskTest/flaskTest/text_similarity_new.h5
 # vocab

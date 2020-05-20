@@ -138,6 +138,14 @@ def predict_load_data1(requester, pandas_dataframe):
     return data_x
 
 app = Flask(__name__)
+
+global session
+global graph
+session = keras.backend.get_session()
+# init = tf.compat.v1.global_variables_initializer()
+# session.run(init)
+graph = tf.get_default_graph()
+
 # 카테고리 예측
 global bert_model
 bert_model = load_model(
@@ -154,28 +162,19 @@ text_similarity_bert_model = load_model(
     compile=False)
 print('text_similarity_bert_model loaded')
 
-global session
-global graph
-session = keras.backend.get_session()
-init = tf.global_variables_initializer()
-session.run(init)
-graph = tf.get_default_graph()
-
-# bert_model = None
-# text_similarity_bert_model = None
-# graph = None
-
 # def load_model():
-
 
 @app.route("/predict", methods=["POST"])
 def predict():
     received_data = request.get_json()
     start = time.time()
     text = received_data['content']
+
     with session.as_default():
         with graph.as_default():
             set_session(session)
+            # init = tf.compat.v1.global_variables_initializer()
+            # session.run(init)
             # 카테고리 예측
             new_data = predict_load_data(text)
 
@@ -228,7 +227,7 @@ def predict():
     # 예측 결과
     return jsonify({
         'status': 200,
-        'code': 'sucess',
+        'code': 'success',
         'data' : {
             'predict': {
                 'text' : text,
@@ -237,7 +236,7 @@ def predict():
                 'percent': str(percent),
                 'counselor': dic_list
             },
-            'version': '2020.05.06',
+            'version': '2020.05.21',
             'time': str(end - start)
         }
         })
