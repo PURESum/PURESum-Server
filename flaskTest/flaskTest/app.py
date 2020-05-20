@@ -142,8 +142,6 @@ app = Flask(__name__)
 global session
 global graph
 session = keras.backend.get_session()
-# init = tf.compat.v1.global_variables_initializer()
-# session.run(init)
 graph = tf.get_default_graph()
 
 # 카테고리 예측
@@ -162,8 +160,6 @@ text_similarity_bert_model = load_model(
     compile=False)
 print('text_similarity_bert_model loaded')
 
-# def load_model():
-
 @app.route("/predict", methods=["POST"])
 def predict():
     received_data = request.get_json()
@@ -173,8 +169,7 @@ def predict():
     with session.as_default():
         with graph.as_default():
             set_session(session)
-            # init = tf.compat.v1.global_variables_initializer()
-            # session.run(init)
+
             # 카테고리 예측
             new_data = predict_load_data(text)
 
@@ -242,7 +237,6 @@ def predict():
         })
 
 if __name__ == '__main__':
-    # load_model()
 
     app.run(host='192.168.219.109', debug=True, port="50051")
     # application.debug = True
