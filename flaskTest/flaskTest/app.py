@@ -55,20 +55,19 @@ relationship = data.loc[data['label'] == 4]
 love = willsoner.loc[subcategories['subcategory_idx'] < 5]
 love['category'] = '연애'
 love['label'] = 0
-
-course = willsoner.loc[subcategories['subcategory_idx'] < 10]
-course = willsoner.loc[subcategories['subcategory_idx'] > 4]
+# print(love)
+course = willsoner.loc[(subcategories['subcategory_idx'] > 4) & (subcategories['subcategory_idx'] < 10)]
 course['category'] = '진로'
 course['label'] = 1
-
-self_esteem = willsoner.loc[subcategories['subcategory_idx'] < 15]
-self_esteem = willsoner.loc[subcategories['subcategory_idx'] > 9]
+# print(course)
+self_esteem = willsoner.loc[(subcategories['subcategory_idx'] > 9) & (subcategories['subcategory_idx'] < 15)]
 self_esteem['category'] = '자존감'
 self_esteem['label'] = 2
-
+# print(self_esteem)
 relationship = willsoner.loc[subcategories['subcategory_idx'] > 14]
 relationship['category'] = '대인관계'
 relationship['label'] = 4
+# print(relationship)
 
 data_category = [love, course, self_esteem, "일상", relationship]
 
@@ -136,7 +135,6 @@ def convert_data1(data, data_df):
     indices1 = np.array(indices1)
     return [indices, indices1]
 
-
 def predict_load_data1(requester, pandas_dataframe):
     data = requester
     data_df = pandas_dataframe
@@ -154,7 +152,7 @@ def predict():
 
     # 카테고리 예측
     bert_model = load_model(
-        path + "/category_test1.h5",
+        path + "/category_test.h5",
         custom_objects=get_custom_objects(),
         compile=False)
 
@@ -180,7 +178,7 @@ def predict():
 
     # 유사도 분석
     text_similarity_bert_model = load_model(
-        path + "/text_similarity2.h5",
+        path + "/text_similarity.h5",
         custom_objects=get_custom_objects(),
         compile=False)
 
@@ -267,7 +265,6 @@ def test():
     ],
 '''
 if __name__ == '__main__':
-    PORT = 50051
-
-    app.run(host='192.168.0.170', debug=True, port=PORT)
-
+    app.run(host='192.168.219.109', debug=True, port="50051")
+    # application.debug = True
+    # application.run()

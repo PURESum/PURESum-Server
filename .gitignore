@@ -4,8 +4,10 @@ __pycache__/
 *$py.class
 
 # model 
-/flaskTest/flaskTest/category_test1.h5
-/flaskTest/flaskTest/text_similarity2.h5
+/flaskTest/flaskTest/category_test.h5
+/flaskTest/flaskTest/category_test_new.h5
+/flaskTest/flaskTest/text_similarity.h5
+/flaskTest/flaskTest/text_similarity_new.h5
 # vocab
 /flaskTest/flaskTest/vocab.txt
 /flaskTest/flaskTest/dbconnect.py

@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3645dc47-3c87-4f87-846f-d0a7a0d0674b" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flaskTest/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/flaskTest/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flaskTest/w.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/flaskTest/w.xlsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
