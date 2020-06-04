@@ -28,18 +28,49 @@ from keras_bert import AdamWarmup, calc_train_steps
 from keras_bert import get_custom_objects
 from keras_radam import RAdam
 
-from dbconnect import connection
+# from dbconnect import connection
 
 import copy
+
+from konlpy.tag import Okt
+from collections import Counter
 
 path = "."
 SEQ_LEN = 300
 
-DATA_COLUMN = "experience"
+DATA_COLUMN = "data"
 LABEL_COLUMN = "label"
 
-#data = pd.read_excel(path + "/w.xlsx")
+data = pd.read_excel(path + "/w.xlsx")
+# data = ((pd.read_excel(path + "/new_w1.xlsx")).drop_duplicates()).reset_index(drop=True)
+data_label = []
+category = ['연애', '진로', '자존감', '일상', '대인관계']
+for i in range(5):
+  x = data['label'].value_counts()[i]
+  data_label.append(x)
 
+love = data.loc[data['label'] == 0]
+f = lambda x: len(x)
+love_length = love['data'].astype(str).apply(f)
+love_length.head()
+
+course = data.loc[data['label'] == 1]
+f = lambda x: len(x)
+course_length = course['data'].astype(str).apply(f)
+course_length.head()
+
+self_esteem = data.loc[data['label'] == 2]
+f = lambda x: len(x)
+self_esteem_length = self_esteem['data'].astype(str).apply(f)
+self_esteem_length.head()
+
+relationship = data.loc[data['label'] == 4]
+f = lambda x: len(x)
+relationship_length = relationship['data'].astype(str).apply(f)
+relationship_length.head()
+
+data_category = [love, course, self_esteem, "일상", relationship]
+'''
 c, conn = connection()
 subcategories = pd.read_sql("SELECT * FROM willson_test.willsoner_subcategory", conn)
 willsoner = pd.read_sql("SELECT * FROM willson_test.willsoner", conn)
@@ -61,7 +92,7 @@ relationship = willsoner.loc[subcategories['subcategory_idx'] > 14]
 relationship['category'] = '대인관계'
 relationship['label'] = 4
 # print(relationship)
-
+'''
 data_category = [love, course, self_esteem, "일상", relationship]
 
 token_dict = {}
@@ -120,7 +151,7 @@ def convert_data1(data, data_df):
     global tokenizer
     indices, indices1 = [], []
     for i in tqdm(range(len(data_df))):  # tqdm : for문 상태바 라이브러리
-        ids, segments = tokenizer.encode(data, data_df[DATA_COLUMN][i], max_len=70)
+        ids, segments = tokenizer.encode(data, data_df[DATA_COLUMN][i], max_len=SEQ_LEN)
         indices.append(ids)
         indices1.append(segments)
 
@@ -147,15 +178,18 @@ graph = tf.get_default_graph()
 # 카테고리 예측
 global bert_model
 bert_model = load_model(
-    path + "/category_test.h5",
+    path + "/BERT_Category_Final.h5",
     custom_objects=get_custom_objects(),
     compile=False)
 print('bert_model loaded')
 
+okt = Okt()
+print("okt = Okt()")
+
 # 유사도 분석
 global text_similarity_bert_model
 text_similarity_bert_model = load_model(
-    path + "/text_similarity.h5",
+    path + "/[QQP]text_similarity_final.h5",
     custom_objects=get_custom_objects(),
     compile=False)
 print('text_similarity_bert_model loaded')
@@ -191,8 +225,29 @@ def predict():
             else:
                 category = '대인관계'
 
+            noun = okt.nouns(text)
+
+            word = []
+            for n in noun:
+                if len(n) > 1:
+                    word.append(n)
+
+            count = Counter(word)
+
+            # 명사 빈도 카운트
+            word_list = count.most_common(10)
+
+            keword = ''
+            word_list_length = len(word_list)
+            for i in range(word_list_length):
+                if i == word_list_length - 1:
+                    keword += word_list[i][0]
+                else:
+                    keword += word_list[i][0] + '|'
+
             # 유사도 분석
             sorted_category = data_category[label[0]]
+            sorted_category = sorted_category.loc[sorted_category['data'].str.contains(keword, na=False)]
             select_category = sorted_category.reset_index(drop=True)  # 인덱스 reset
 
             similarity_set = predict_load_data1(text, select_category)  # 문장 유사도를 위한 버트 input 데이터 생성
@@ -212,10 +267,10 @@ def predict():
                 print(select_category[x:x + 1])
                 result.append(select_category[x:x + 1])
                 preds[text_similarity_rank[i]] = [0]
-                dic_list[i]['willsoner_idx'] = int(result[i].iloc[0, 0])
-                dic_list[i]['experience'] = result[i].iloc[0, 1]
-                dic_list[i]['category'] = result[i].iloc[0, 2]
-                dic_list[i]['label'] = int(result[i].iloc[0, 3])
+                dic_list[i]['willsoner_idx'] = result[i].index.start + 1
+                dic_list[i]['experience'] = result[i].iloc[0, 0]
+                dic_list[i]['category'] = result[i].iloc[0, 1]
+                dic_list[i]['label'] = int(result[i].iloc[0, 2])
 
             end = time.time()
 
@@ -231,7 +286,7 @@ def predict():
                 'percent': str(percent),
                 'counselor': dic_list
             },
-            'version': '2020.05.21',
+            'version': '2020.06.04',
             'time': str(end - start)
         }
         })
